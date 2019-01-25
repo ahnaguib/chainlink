@@ -38,11 +38,12 @@ contract('ServiceAgreementConsumer', () => {
         let log = tx.receipt.logs[3]
         assert.equal(log.address, coord.address)
 
-        let [jId, requester, wei, _, ver, cborData] = h.decodeRunRequest(log) 
+        let [jId, requester, wei, _, ver, cborData] = h.decodeRunRequest(log)
         let params = await h.decodeDietCBOR(cborData)
+        console.log('agreement', params, agreement, jId)
         assert.equal(agreement.id, jId)
         assertBigNum(paymentAmount, wei,
-                     "Logged transfer amount differed from actual amount")
+          'Logged transfer amount differed from actual amount')
         assert.equal(cc.address.slice(2), requester.slice(26))
         assert.equal(1, ver)
         const url = 'https://min-api.cryptocompare.com/' +

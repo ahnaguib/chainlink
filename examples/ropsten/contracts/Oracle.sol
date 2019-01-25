@@ -192,6 +192,7 @@ contract Oracle is ChainlinkRequestInterface, OracleInterface, Ownable {
     uint256 indexed amount,
     uint256 requestId,
     uint256 version,
+    uint256 gasLimit,
     bytes data
   );
 
@@ -250,6 +251,7 @@ contract Oracle is ChainlinkRequestInterface, OracleInterface, Ownable {
       _amount,
       uint256(requestId),
       _version,
+      0,
       _data);
   }
 
